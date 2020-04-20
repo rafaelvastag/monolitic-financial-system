@@ -1,48 +1,57 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns:h="http://java.sun.com/jsf/html"
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-	<title>Estados</title>
-	<h:outputStylesheet library="css" name="estilo.css"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Cidades</title>
+	<h:outputStylesheet library="css" name="estilo.css" />
 </h:head>
 <h:body>
 	<h:form>
-		<p:panel header="Lista dos Estados">
+
+		<p:panel header="Lista de Cidades">
 			<p:dataTable emptyMessage="Nenhum registro encontrado. "
 				paginator="true">
 				<f:facet name="header">
 					<p:commandButton value="Novo" oncomplete="PF('dialogo').show();" />
 				</f:facet>
-
+				
 				<p:column headerText="Nome"></p:column>
 
-				<p:column headerText="Sigla"></p:column>
+				<p:column headerText="Estado"></p:column>
 
 				<p:column headerText="Opções"></p:column>
 
 			</p:dataTable>
 		</p:panel>
-	</h:form>
-
-	<p:dialog header="Estados - Cadastro" widgetVar="dialogo"
+	</h:form>>
+	
+	<p:dialog header="Cidades - Cadastro" widgetVar="dialogo"
 		draggable="false" resizable="false" modal="true" closable="false">
 		<h:form>
 			<h:panelGrid columns="2">
-				<p:outputLabel value="Nome: "/>
-				<p:inputText maxlength="50" size="30"/>
-				
-				<p:outputLabel value="Sigla "/>
-				<p:inputText maxlength="2" size="10"/>
+				<p:outputLabel value="Nome: " />
+				<p:inputText maxlength="50" size="30" />
+
+				<p:outputLabel value="Estado" />
+
+				<p:selectOneMenu filter="true">
+					<f:selectItem itemValue="" itemLabel="Selecione um estado" />
+				</p:selectOneMenu>
 			</h:panelGrid>
-			
+
 			<h:panelGrid columns="2">
-				<p:commandButton value="Salvar"/>
-				<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();"/>
+				<p:commandButton value="Salvar" />
+				<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();" />
 			</h:panelGrid>
+
 		</h:form>
 	</p:dialog>
+
+
 </h:body>
 </html>
