@@ -1,5 +1,7 @@
 package br.com.sistema.financeiro.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -8,7 +10,8 @@ import javax.persistence.ManyToOne;
 import br.com.sistema.financeiro.domain.GenericDomain;
 
 @Entity
-public class Cidade extends GenericDomain{
+public class Cidade extends GenericDomain implements Serializable{
+	private static final long serialVersionUID = 1L;
 
 	@Column(length = 50, nullable = false)
 	private String nome;
