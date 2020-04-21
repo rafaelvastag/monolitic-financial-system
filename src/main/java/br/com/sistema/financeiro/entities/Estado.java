@@ -1,5 +1,7 @@
 package br.com.sistema.financeiro.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
@@ -12,8 +14,9 @@ import br.com.sistema.financeiro.domain.GenericDomain;
  */
 
 @Entity
-public class Estado extends GenericDomain {
-	
+public class Estado extends GenericDomain implements Serializable{
+	private static final long serialVersionUID = 1L;
+
 	@Column(length = 2, nullable = false)
 	private String sigla;
 	

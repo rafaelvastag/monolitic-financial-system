@@ -31,7 +31,7 @@ abstract class GenericDAO<E> {
 		EntityTransaction transaction = entityManager.getTransaction();
 		try {
 			transaction.begin();
-			entityManager.persist(entidade);
+			entityManager.merge(entidade);
 			transaction.commit();
 		} catch (RuntimeException error) {
 			if (transaction != null) {
@@ -66,11 +66,12 @@ abstract class GenericDAO<E> {
 
 		try {
 			transaction.begin();
-			entityManager.remove(entidade);
+			entityManager.remove(entityManager.contains(entidade) ? entidade : entityManager.merge(entidade));
 			transaction.commit();
 		} catch (Exception e) {
 			if (transaction != null) {
 				transaction.rollback();
+				e.printStackTrace();
 			}		
 		}
 	}
