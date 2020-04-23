@@ -15,8 +15,7 @@
 		<class>br.com.sistema.financeiro.entities.Usuario</class>
 		<class>br.com.sistema.financeiro.entities.Funcionario</class>
 		<class>br.com.sistema.financeiro.entities.ItemVenda</class>
-		<class>br.com.sistema.financeiro.entities.Venda</class>	
-		<class>br.com.sistema.financeiro.entities.Endereco</class>
+		<class>br.com.sistema.financeiro.entities.Venda</class>
 		<class>br.com.sistema.financeiro.domain.GenericDomain</class>
 
 		<properties>
@@ -34,6 +33,5 @@
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 		</properties>
-
 	</persistence-unit>
 </persistence>

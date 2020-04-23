@@ -1,10 +1,9 @@
 package br.com.sistema.financeiro.entities;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import br.com.sistema.financeiro.domain.GenericDomain;
 
@@ -20,9 +19,6 @@ public class Pessoa extends GenericDomain{
 	@Column(length = 12, nullable = false)
 	private String rg;
 	
-	@OneToMany
-	private	List<Endereco> endereco;
-	
 	@Column(length = 13, nullable = false)
 	private String telefone;
 	
@@ -32,20 +28,31 @@ public class Pessoa extends GenericDomain{
 	@Column(length = 100, nullable = false)
 	private String email;
 	
-	public Pessoa() {
-	}
-
+	@Column(length = 100, nullable = false)
+	private String logradouro;
 	
-	public Pessoa(String nome, String cpf, String rg, List<Endereco> endereco, String telefone, String celular,
-			String email) {
-		super();
-		this.nome = nome;
-		this.cpf = cpf;
-		this.rg = rg;
-		this.endereco = endereco;
-		this.telefone = telefone;
-		this.celular = celular;
-		this.email = email;
+	@Column(nullable = false)
+	private String numero;
+	
+	@Column(length = 10)
+	private String complemento;
+	
+	@Column(length = 30, nullable = false)
+	private String bairro;
+	
+	@Column(length = 10, nullable = false)
+	private String cep;
+	
+	@ManyToOne
+	@JoinColumn(nullable = false)
+	private Estado estado;
+	
+	@ManyToOne
+	@JoinColumn(nullable = false)
+	private Cidade cidade;
+	
+	
+	public Pessoa() {
 	}
 
 
@@ -53,67 +60,139 @@ public class Pessoa extends GenericDomain{
 		return nome;
 	}
 
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 
 	public String getCpf() {
 		return cpf;
 	}
 
+
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
+
 
 	public String getRg() {
 		return rg;
 	}
 
+
 	public void setRg(String rg) {
 		this.rg = rg;
 	}
 
-	public List<Endereco> getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(List<Endereco> endereco) {
-		this.endereco = endereco;
-	}
 
 	public String getTelefone() {
 		return telefone;
 	}
 
+
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+
 
 	public String getCelular() {
 		return celular;
 	}
 
+
 	public void setCelular(String celular) {
 		this.celular = celular;
 	}
 
+
 	public String getEmail() {
 		return email;
 	}
+
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
 
-	@Override
-	public String toString() {
-		return "Pessoa [nome=" + nome + ", cpf=" + cpf + ", rg=" + rg + ", endereco=" + endereco + ", telefone="
-				+ telefone + ", celular=" + celular + ", email=" + email + "]";
+	public String getLogradouro() {
+		return logradouro;
 	}
 
-	
-	
-	
+
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
+	}
+
+
+	public String getNumero() {
+		return numero;
+	}
+
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+
+	public String getComplemento() {
+		return complemento;
+	}
+
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+
+
+	public String getBairro() {
+		return bairro;
+	}
+
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+
+	public String getCep() {
+		return cep;
+	}
+
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+
+	public Estado getEstado() {
+		return estado;
+	}
+
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
+
+
+	public Cidade getCidade() {
+		return cidade;
+	}
+
+
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Pessoa [nome=" + nome + ", cpf=" + cpf + ", rg=" + rg + ", telefone=" + telefone + ", celular="
+				+ celular + ", email=" + email + ", logradouro=" + logradouro + ", numero=" + numero + ", complemento="
+				+ complemento + ", bairro=" + bairro + ", cep=" + cep + ", estado=" + estado + ", cidade=" + cidade
+				+ "]";
+	}
+
 	
 }

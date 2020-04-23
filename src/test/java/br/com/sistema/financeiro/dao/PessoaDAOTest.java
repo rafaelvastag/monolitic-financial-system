@@ -7,7 +7,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import br.com.sistema.financeiro.entities.Cidade;
-import br.com.sistema.financeiro.entities.Endereco;
 import br.com.sistema.financeiro.entities.Estado;
 import br.com.sistema.financeiro.entities.Pessoa;
 
@@ -41,14 +40,7 @@ public class PessoaDAOTest {
 		EstadoDAO estadoDAO = new EstadoDAO();
 		Estado estado = estadoDAO.findById(1L);
 		
-		EnderecoDAO enderecoDAO = new EnderecoDAO();
-		Endereco endereco = new Endereco("Rua dos Continentes", "777", "", "Vila Ré", "000111-99", estado, cidade);
-		
-		enderecoDAO.salvar(endereco);
-		
-		endereco = enderecoDAO.findById(15L);
-		
-		pessoa.getEndereco().add(endereco);
+
 		
 		pessoaDAO.salvar(pessoa);
 	}
