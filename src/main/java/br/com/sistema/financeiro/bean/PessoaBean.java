@@ -82,15 +82,45 @@ public class PessoaBean implements Serializable {
 	}
 
 	public void editar(ActionEvent evento) {
-
+		pessoa = (Pessoa) evento.getComponent().getAttributes().get("pessoaSelecionada");
 	}
 
 	public void salvar() {
+		try {
+			PessoaDAO pessoaDAO = new PessoaDAO();
+			pessoaDAO.salvar(pessoa);
+			
+			pessoas = pessoaDAO.findAll();
+			
+			pessoa = new Pessoa();
+			
+			pessoa.setEstado(new Estado());
 
+			EstadoDAO estadoDAO = new EstadoDAO();
+			estados = estadoDAO.findAll();
+
+			cidades = new ArrayList<>();
+		} catch (RuntimeException erro) {
+			Messages.addGlobalError("Ocorreu um erro ao tentar salvar a pessoa");
+			erro.printStackTrace();
+		}
 	}
 
 	public void excluir(ActionEvent evento) {
+		try {
+			pessoa = (Pessoa) evento.getComponent().getAttributes().get("pessoaSelecionada");
 
+			PessoaDAO pessoaDAO = new PessoaDAO();
+
+			pessoaDAO.excluir(pessoa);
+			
+			pessoas = pessoaDAO.findAll();
+
+			Messages.addGlobalInfo("Estado removido com sucesso");
+		} catch (RuntimeException erro) {
+			Messages.addFlashGlobalError("Ocorreu um erro ao tentar remover o estado");
+			erro.printStackTrace();
+		}
 	}
 
 	public void novo() {
